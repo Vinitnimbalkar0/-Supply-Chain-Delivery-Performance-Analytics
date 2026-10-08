@@ -1,109 +1,85 @@
 # Supply Chain & Delivery Performance Analytics
 
-## Business Analytics Case Study | Excel
+**Business Analytics Case Study | Microsoft Excel**
 
-### 📌 Project Overview
-
-This project analyzes supply chain and delivery performance using the **DataCo Smart Supply Chain dataset**.
-
-The objective was to understand **what is driving delivery delays, where operational risk is concentrated, and which areas could have the greatest business impact**.
-
-Rather than building a dashboard based only on descriptive KPIs, the analysis follows a business-driven approach:
-
-**Business Problem → KPI Analysis → Segmentation → Root Cause Analysis → Financial Impact → Recommendations**
+> Analyzing delivery risk, financial exposure, and operational priorities using transactional supply-chain data.
 
 ---
 
-## 🎯 Business Problem
+## 1. Business Problem
 
-Management wants to improve order fulfillment and delivery performance while protecting revenue and profitability.
+Management wants to improve **order fulfillment and delivery performance** while protecting **revenue and profitability**.
 
-The analysis answers:
+The key business question was:
 
-- What is the overall delivery performance?
-- Which shipping modes have the highest delay rates?
-- Are delays concentrated in specific markets or regions?
-- Which products and customer segments show higher delivery risk?
-- Is delivery performance changing over time?
-- Which areas have the greatest financial exposure?
-- Where should management prioritize operational improvements?
+> **What operational factors are associated with delivery delays, where is the business most exposed, and which areas should management prioritize for improvement?**
 
----
+The analysis evaluates:
 
-## 📊 Dataset
-
-**Dataset:** DataCo Smart Supply Chain
-
-The dataset contains approximately **71K order-line records** covering:
-
-- Orders & order items
-- Shipping and delivery performance
-- Products & categories
-- Customers
-- Markets & regions
-- Sales
-- Discounts
-- Profit-related metrics
-
-> **Important:** The dataset is at an order-line level. Distinct `Order ID` is therefore used when calculating order-level KPIs.
+- Shipping-mode performance
+- Market and regional delivery risk
+- Product and category performance
+- Customer segments
+- Delivery trends over time
+- Revenue and profitability exposure
+- Root-cause indicators
+- Risk vs. business impact
 
 ---
 
-# 🔎 Key Insights
+## 2. Executive Summary
 
-### 1. Shipping Mode is the strongest observed delivery-risk signal
+### 🔴 Delivery performance varies significantly by shipping mode
 
-First Class showed an approximately **97.4% late-delivery rate**, compared with approximately **57% overall**.
+**First Class** recorded an observed late-delivery rate of approximately **97.4%**, compared with approximately **57% overall**.
 
-Second Class also showed elevated delivery risk at approximately **79%**.
+**Second Class** also showed elevated risk at approximately **79%**.
 
-**Insight:** The delivery problem is substantially more pronounced for certain shipping modes than at the overall market level.
+**Implication:** The delivery problem is substantially more pronounced for certain shipping modes than at the overall market level.
 
 ---
 
-### 2. The First Class pattern persists across markets
+### 🌍 Geography alone does not explain the problem
 
-First Class maintained a very high observed late-delivery rate across the major markets:
+Market-level late-delivery rates were relatively close, ranging from approximately **55.5% to 59.2%**.
 
-- Africa: ~99.3%
-- Pacific Asia: ~97.8%
-- Europe: ~97.3%
-- USCA: ~97.3%
-- LATAM: ~96.7%
+In contrast, shipping-mode rates ranged from approximately **38% to 97.4%**.
 
-**Insight:** The pattern is not isolated to one geography and requires operational investigation at the shipping-process level.
+**Implication:** Geography alone does not explain the observed variation in delivery performance.
+
+---
+
+### 🚚 First Class risk persists across markets
+
+First Class showed very high observed late-delivery rates across the five major markets:
+
+| Market | First Class Late Rate |
+|---|---:|
+| Africa | ~99.3% |
+| Pacific Asia | ~97.8% |
+| Europe | ~97.3% |
+| USCA | ~97.3% |
+| LATAM | ~96.7% |
+
+**Implication:** The pattern is not isolated to one geography and warrants operational investigation at the shipping/fulfillment process level.
 
 > These findings represent association, not proof of causation.
 
 ---
 
-### 3. Geography alone does not explain the delivery problem
+### 💰 Financial prioritization should go beyond late rate
 
-Market-level late-delivery rates were relatively close:
+A high late-delivery percentage does not automatically mean the segment has the greatest business impact.
 
-**~55.5% – 59.2%**
+The project therefore evaluates:
 
-while shipping-mode late rates ranged from approximately:
+**Late Rate + Sales Exposure + Profitability**
 
-**~38% – 97.4%**
-
-**Insight:** Shipping-mode differences appear substantially larger than market-level differences, suggesting that geography alone does not explain the observed variation.
+to identify areas where operational problems could affect a larger portion of the business.
 
 ---
 
-### 4. Revenue exposure should determine operational priorities
-
-The analysis combines:
-
-**Sales Exposure + Late Rate + Profit Margin**
-
-rather than ranking operational problems using late rate alone.
-
-**Insight:** A segment with a slightly lower late rate but substantially higher revenue exposure may represent a greater business priority than a small segment with an extremely high late rate.
-
----
-
-### 5. Europe and LATAM have the largest sales exposure
+### 🌎 Europe and LATAM represent major revenue exposure
 
 Approximate sales:
 
@@ -115,100 +91,250 @@ Approximate sales:
 | USCA | 1.57M |
 | Africa | 0.70M |
 
-**Insight:** Delivery improvements in high-revenue markets could have greater business impact, provided operational risk is also elevated.
+**Implication:** Operational improvements in high-revenue markets could have greater potential business impact, provided delivery risk is also elevated.
 
 ---
 
-# 💡 Recommendations
+## 3. Key Insights
+
+| ID | Insight | Business Implication |
+|---|---|---|
+| **01** | First Class has an observed late rate of ~97.4% | Requires immediate operational investigation |
+| **02** | Second Class has ~79% late deliveries | Indicates another high-risk shipping segment |
+| **03** | Market late rates are relatively narrow | Geography alone does not explain delivery variation |
+| **04** | First Class risk persists across markets | Problem may be related to shipping/fulfillment processes rather than one geography |
+| **05** | High revenue + high delivery risk creates greater exposure | Prioritize based on business impact, not percentage alone |
+| **06** | Europe and LATAM have the largest sales exposure | Delivery improvements here could affect a larger revenue base |
+| **07** | Discounting should be evaluated against profitability | Higher sales do not necessarily mean better financial performance |
+| **08** | Product categories should be evaluated using both sales and delivery risk | High-value/high-risk categories deserve greater attention |
+
+---
+
+## 4. Recommendations
 
 ### 1. Investigate First Class fulfillment performance
 
-Review the First Class process across:
+Review:
 
-- Fulfillment operations
-- Scheduled shipping commitments
 - Warehouse processing
+- Scheduled shipping commitments
 - Product mix
-- Market/region
 - Order characteristics
+- Market/region
+- Operational handoffs
 
-Do not immediately eliminate the shipping mode based only on its late rate.
+The recommendation is to **investigate before changing the shipping policy**, because the dataset does not establish causality.
 
----
+### 2. Prioritize using Risk × Business Impact
 
-### 2. Prioritize by Risk × Business Impact
+Use:
 
-Use a two-dimensional prioritization framework:
+```text
+High Late Rate
+       +
+High Revenue Exposure
+       +
+Weak Profitability
+       ↓
+CRITICAL PRIORITY
+```
 
-**High Late Rate + High Revenue Exposure → Critical Priority**
+This prevents management from over-prioritizing small segments with extreme percentages but limited business exposure.
 
-**High Late Rate + Low Revenue Exposure → Investigate / Monitor**
+### 3. Investigate high-value product categories
 
-This prevents management from focusing only on extreme percentages.
-
----
-
-### 3. Investigate high-value categories with delivery risk
-
-Identify categories combining:
+Focus on categories combining:
 
 - High sales
 - High order volume
 - Above-baseline late rate
-- Weak profitability
+- Weak or declining profitability
 
-These categories should receive greater operational attention.
+### 4. Monitor high-demand periods
 
----
+Compare:
 
-### 4. Evaluate discounting against profitability
-
-Compare discount levels with:
-
-- Sales
-- Profit
-- Profit Margin
-- Order volume
-
-The objective is to determine whether additional sales generated through discounts justify the associated margin reduction.
-
----
-
-### 5. Monitor delivery performance over time
-
-Track:
-
-- Monthly late-delivery rate
-- Order volume
+- Monthly order volume
+- Late-delivery rate
 - Shipping variance
 - Sales
-- Shipping-mode performance
+- Shipping-mode mix
 
-Periods with **high demand + high late-delivery rates** should be investigated for potential capacity or fulfillment pressure.
+Periods with **high demand + high late-delivery rates** should be investigated for potential fulfillment or capacity pressure.
+
+### 5. Evaluate discount effectiveness
+
+Compare:
+
+**Discount → Sales → Profit → Profit Margin**
+
+The objective is to determine whether additional sales generated through discounting justify the reduction in profitability.
 
 ---
 
-# 📈 Analytical Framework
+## 5. Business Impact
 
-The project follows this analytical flow:
+The project transforms transactional supply-chain data into an **operational decision framework**.
+
+Instead of asking only:
+
+> **"What is the late-delivery rate?"**
+
+the analysis answers:
+
+> **"Where is delivery performance weakest, how much business is exposed, what characteristics are associated with the problem, and where should management investigate first?"**
+
+This allows management to prioritize improvement opportunities using both:
+
+**Operational Risk + Financial Impact**
+
+---
+
+## 6. Analytical Approach
 
 ```text
 Business Problem
        ↓
+Data Understanding
+       ↓
+Data Cleaning & Quality Checks
+       ↓
 KPI Analysis
        ↓
-Shipping Mode
+Shipping Mode Analysis
        ↓
-Market & Region
+Market & Regional Analysis
        ↓
-Product & Customer
+Product Analysis
        ↓
 Root Cause Analysis
        ↓
-Time Trend Analysis
+Trend & Time Analysis
        ↓
-Financial Impact
+Financial Impact Analysis
        ↓
 Risk × Business Impact
        ↓
-Recommendations
+Executive Recommendations
+```
+
+---
+
+## 7. Dataset
+
+**Dataset:** DataCo Smart Supply Chain
+
+The dataset contains approximately **71K order-line records** covering:
+
+- Orders
+- Order items
+- Shipping
+- Delivery status
+- Products
+- Categories
+- Customers
+- Markets
+- Regions
+- Sales
+- Discounts
+- Profit-related metrics
+
+### Data Grain
+
+> **One row represents an order-line/item-level transaction.**
+
+Therefore, order-level KPIs use distinct `Order ID` rather than simply counting rows.
+
+---
+
+## 8. Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| **Microsoft Excel** | Analysis and reporting |
+| **Power Query** | Data cleaning and transformation |
+| **Excel Tables** | Structured analytical model |
+| **PivotTables** | Segmentation and aggregation |
+| **Excel Formulas** | KPI and financial calculations |
+| **Conditional Formatting** | Risk identification |
+| **Excel Charts** | Business visualization |
+
+### Key Excel Techniques
+
+- `SUMIFS`
+- `COUNTIFS`
+- `FILTER`
+- `UNIQUE`
+- `COUNTA`
+- `AVERAGEIFS`
+- `CORREL`
+- `IFS`
+- Percentage-point analysis
+- Rolling averages
+- PivotTables
+- Heatmaps
+- Risk × Impact analysis
+
+---
+
+## 9. Project Structure
+
+```text
+supply-chain-delivery-analytics/
+│
+├── README.md
+│
+├── excel/
+│   └── Supply_Chain_Delivery_Analytics.xlsx
+│
+├── documentation/
+│   ├── business-problem.md
+│   ├── data-dictionary.md
+│   ├── data-quality.md
+│   ├── insights.md
+│   └── recommendations.md
+│
+├── screenshots/
+│   ├── executive-dashboard.png
+│   ├── shipping-analysis.png
+│   ├── market-analysis.png
+│   ├── product-analysis.png
+│   ├── root-cause-analysis.png
+│   └── financial-analysis.png
+│
+└── LICENSE
+```
+
+---
+
+## 10. Analytical Limitations
+
+- The dataset is observational; relationships do not establish causation.
+- Late-delivery rate does **not** represent financial loss.
+- Revenue associated with late orders should be interpreted as **revenue exposure**, not lost revenue.
+- Profit calculations must respect the order-line vs. order-level grain.
+- Small segments can produce unstable rates; volume thresholds should be applied.
+- Additional data such as carrier performance, warehouse processing time, refunds, customer complaints, logistics costs and cancellations would strengthen root-cause analysis.
+
+---
+
+## 11. Portfolio Takeaway
+
+> **The key analytical finding is that supply-chain priorities should not be determined by delivery rate alone. Combining delivery risk with revenue exposure and profitability provides a more effective framework for identifying where management should investigate first.**
+
+---
+
+## 👤 Author
+
+**Vinit Nimbalkar**
+
+Data Science Engineering Student  
+Aspiring Data Analyst | Business Analytics | Excel | SQL | Power BI
+
+---
+
+### ⭐ Project Focus
+
+**Business Problem → Insights → Financial Exposure → Recommendations**
+
+**Not just a dashboard. A decision-oriented analytics case study.**
